@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CedevGlobal — Nigerian Agricultural Exports</title>
+  <meta name="description" content="CedevGlobal connects global buyers to premium Nigerian agricultural commodities — cashews, sesame, soybeans, and hibiscus — with graded quality and reliable logistics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-deep: #1a3a28;
+      --green-mid: #2d6a45;
+      --green-light: #4d9966;
+      --gold: #c8933a;
+      --gold-light: #e8b96a;
+      --cream: #f7f3ec;
+      --cream-dark: #ede6d8;
+      --text-dark: #1a1a16;
+      --text-mid: #3d3d30;
+      --text-muted: #7a7a65;
+      --white: #ffffff;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--text-dark); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px;
+      background: rgba(26, 58, 40, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 147, 58, 0.2);
+    }
+    .nav-logo { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--cream); letter-spacing: 0.02em; text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 400; color: rgba(247,243,236,0.7); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta { font-size: 12px; font-weight: 500; color: var(--green-deep); background: var(--gold); padding: 9px 22px; border-radius: 2px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; background: var(--green-deep); position: relative; overflow: hidden; padding: 120px 60px 80px; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 75% 50%, rgba(45,106,69,0.4) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(200,147,58,0.1) 0%, transparent 60%); }
+    .hero-pattern { position: absolute; top: 0; right: 0; width: 55%; height: 100%; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--cream) 0px, var(--cream) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(-45deg, var(--cream) 0px, var(--cream) 1px, transparent 1px, transparent 40px); }
+    .hero-content { position: relative; max-width: 680px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; color: var(--gold-light); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(42px, 5.5vw, 72px); font-weight: 500; color: var(--cream); line-height: 1.1; margin-bottom: 28px; letter-spacing: -0.01em; }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero p { font-size: 16px; font-weight: 300; color: rgba(247,243,236,0.7); line-height: 1.8; max-width: 500px; margin-bottom: 44px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-gold { display: inline-block; font-size: 12px; font-weight: 500; color: var(--green-deep); background: var(--gold); padding: 14px 32px; border-radius: 2px; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-ghost { display: inline-block; font-size: 12px; font-weight: 500; color: rgba(247,243,236,0.8); background: transparent; padding: 14px 32px; border-radius: 2px; border: 1px solid rgba(247,243,236,0.25); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+    .hero-stats { position: absolute; bottom: 60px; right: 60px; display: flex; gap: 48px; }
+    .stat { text-align: right; }
+    .stat-num { font-family: var(--serif); font-size: 36px; font-weight: 600; color: var(--cream); line-height: 1; }
+    .stat-label { font-size: 11px; font-weight: 400; color: rgba(247,243,236,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+    /* PRODUCTS */
+    .products { padding: 100px 60px; background: var(--cream); }
+    .section-header { margin-bottom: 60px; }
+    .section-tag { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; color: var(--green-mid); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; }
+    .section-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--green-mid); }
+    .section-header h2 { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px); font-weight: 500; color: var(--text-dark); line-height: 1.15; max-width: 560px; }
+    .section-header h2 em { font-style: italic; color: var(--green-mid); }
+
+    .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .product-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 4px; overflow: hidden; transition: box-shadow 0.3s, transform 0.2s; }
+    .product-card:hover { box-shadow: 0 8px 32px rgba(26,58,40,0.1); transform: translateY(-2px); }
+    .product-img { width: 100%; height: 220px; object-fit: cover; display: block; background: var(--cream-dark); }
+    .product-img-placeholder { width: 100%; height: 220px; background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+    .product-body { padding: 28px 32px 32px; }
+    .product-num { font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .product-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--text-dark); margin-bottom: 10px; }
+    .product-card p { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 11px; font-weight: 500; color: var(--green-mid); background: rgba(45,106,69,0.08); padding: 4px 10px; border-radius: 2px; letter-spacing: 0.04em; }
+    .tag-red { color: #8b2020; background: rgba(180,40,40,0.08); }
+
+    /* WHY US */
+    .why { padding: 100px 60px; background: var(--green-deep); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-text .section-tag { color: var(--gold-light); }
+    .why-text .section-tag::before { background: var(--gold); }
+    .why-text h2 { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 48px); font-weight: 500; color: var(--cream); line-height: 1.15; margin-bottom: 20px; }
+    .why-text h2 em { font-style: italic; color: var(--gold-light); }
+    .why-text > p { font-size: 15px; font-weight: 300; color: rgba(247,243,236,0.65); line-height: 1.8; margin-bottom: 40px; }
+    .pillars { display: flex; flex-direction: column; gap: 0; }
+    .pillar { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid rgba(247,243,236,0.1); }
+    .pillar:first-child { border-top: 1px solid rgba(247,243,236,0.1); }
+    .pillar-num { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--gold); min-width: 32px; padding-top: 2px; }
+    .pillar h4 { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+    .pillar p { font-size: 13px; font-weight: 300; color: rgba(247,243,236,0.55); line-height: 1.65; }
+    .why-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .why-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(247,243,236,0.1); padding: 32px 28px; border-radius: 2px; }
+    .why-box:first-child { grid-column: span 2; background: rgba(200,147,58,0.1); border-color: rgba(200,147,58,0.3); }
+    .why-box-icon { font-size: 28px; margin-bottom: 16px; }
+    .why-box h5 { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+    .why-box p { font-size: 13px; font-weight: 300; color: rgba(247,243,236,0.55); line-height: 1.6; }
+
+    /* PROCESS */
+    .process { padding: 100px 60px; background: var(--cream-dark); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 60px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, transparent, var(--green-mid), transparent); }
+    .step { padding: 0 24px; text-align: center; }
+    .step-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--green-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative; z-index: 1; }
+    .step-circle span { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--gold-light); }
+    .step h4 { font-size: 15px; font-weight: 500; color: var(--text-dark); margin-bottom: 8px; }
+    .step p { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.65; }
+
+    /* CONTACT */
+    .contact { padding: 100px 60px; background: var(--cream); display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contact-left .section-tag { color: var(--green-mid); }
+    .contact-left .section-tag::before { background: var(--green-mid); }
+    .contact-left h2 { font-family: var(--serif); font-size: clamp(30px, 3vw, 42px); font-weight: 500; color: var(--text-dark); line-height: 1.15; margin-bottom: 16px; }
+    .contact-left h2 em { font-style: italic; color: var(--green-mid); }
+    .contact-left > p { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; }
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+    .contact-detail { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-detail-icon { width: 36px; height: 36px; flex-shrink: 0; background: var(--green-deep); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .contact-detail-info label { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+    .contact-detail-info span { font-size: 14px; color: var(--text-dark); font-weight: 400; }
+    .contact-form-wrap { background: var(--white); border: 1px solid var(--cream-dark); padding: 48px 44px; }
+    .contact-form-wrap h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--text-dark); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--text-dark); background: var(--cream); border: 1px solid var(--cream-dark); padding: 11px 14px; border-radius: 2px; outline: none; transition: border-color 0.2s; appearance: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green-mid); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--white); background: var(--green-deep); border: none; cursor: pointer; padding: 15px 32px; border-radius: 2px; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s; margin-top: 4px; }
+    .form-submit:hover { background: var(--green-mid); }
+
+    /* FOOTER */
+    footer { background: #111c13; padding: 48px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--cream); }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: 12px; color: rgba(247,243,236,0.3); letter-spacing: 0.04em; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 12px; color: rgba(247,243,236,0.4); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-stats { position: static; margin-top: 48px; justify-content: flex-start; gap: 32px; }
+      .products { padding: 70px 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .why { padding: 70px 24px; grid-template-columns: 1fr; gap: 48px; }
+      .process { padding: 70px 24px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .contact { padding: 70px 24px; grid-template-columns: 1fr; gap: 48px; }
+      .contact-form-wrap { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (max-width: 560px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .why-visual { grid-template-columns: 1fr; }
+      .why-box:first-child { grid-column: span 1; }
+    }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero h1      { animation: fadeUp 0.6s ease 0.25s both; }
+    .hero p       { animation: fadeUp 0.6s ease 0.4s both; }
+    .hero-actions { animation: fadeUp 0.6s ease 0.55s both; }
+    .hero-stats   { animation: fadeUp 0.6s ease 0.7s both; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Cedev<span>Global</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enquire now</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Nigerian Agricultural Exports</div>
+    <h1>Premium commodities<br>from Nigeria to the<br><em>world</em></h1>
+    <p>CedevGlobal sources, grades, and exports top-quality cashews, sesame, soybeans, and hibiscus to international buyers — backed by reliable logistics and transparent trade.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold">Request a quote</a>
+      <a href="#products" class="btn-ghost">Our products</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Core commodities</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Global</div>
+      <div class="stat-label">Buyer markets</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Grade-certified</div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-header">
+    <div class="section-tag">What we export</div>
+    <h2>Four commodities,<br><em>exceptional quality</em></h2>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <img
+        src="https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&q=80"
+        alt="Cashew nuts"
+        class="product-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="product-img-placeholder" style="display:none;">🥜</div>
+      <div class="product-body">
+        <div class="product-num">01 — Cashew Nuts</div>
+        <h3>Cashew Nuts</h3>
+        <p>Sourced from Nigeria's top-producing belts. Offered as raw cashew nuts (RCN) and processed kernels, graded to international standards for confectionery and snack markets worldwide.</p>
+        <div class="product-tags">
+          <span class="tag">Raw & processed</span>
+          <span class="tag">W180 – W450</span>
+          <span class="tag">ISO graded</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img
+        src="https://images.unsplash.com/photo-1612257998531-744c4d659476?w=800&q=80"
+        alt="Sesame seeds"
+        class="product-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="product-img-placeholder" style="display:none;">🌾</div>
+      <div class="product-body">
+        <div class="product-num">02 — Sesame Seeds</div>
+        <h3>Sesame Seeds</h3>
+        <p>Natural and hulled sesame with consistent oil content and low moisture. Compliant with EU and Asian import standards, ideal for oil extraction, baking, and pharmaceutical uses.</p>
+        <div class="product-tags">
+          <span class="tag">Natural & hulled</span>
+          <span class="tag">High oil content</span>
+          <span class="tag">EU compliant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img
+        src="https://images.unsplash.com/photo-1599720843519-8e0f71a4b90f?w=800&q=80"
+        alt="Soybeans"
+        class="product-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="product-img-placeholder" style="display:none;">🌿</div>
+      <div class="product-body">
+        <div class="product-num">03 — Soybeans</div>
+        <h3>Soybeans</h3>
+        <p>Non-GMO Nigerian soybeans with high protein content. Suitable for animal feed manufacturers, edible oil processors, and food industries globally.</p>
+        <div class="product-tags">
+          <span class="tag">Non-GMO</span>
+          <span class="tag">High protein</span>
+          <span class="tag">Feed & food grade</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img
+        src="https://images.unsplash.com/photo-1597714026720-8f74c62310ba?w=800&q=80"
+        alt="Dried hibiscus flowers"
+        class="product-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="product-img-placeholder" style="display:none;">🌺</div>
+      <div class="product-body">
+        <div class="product-num">04 — Hibiscus (Zobo)</div>
+        <h3>Dried Hibiscus Flowers</h3>
+        <p>Premium dried Hibiscus sabdariffa (Roselle) sourced from Jigawa, Kano, and Katsina. Vibrant deep-red calyxes with rich flavour, used in herbal teas, beverages, food colouring, and nutraceuticals worldwide.</p>
+        <div class="product-tags">
+          <span class="tag tag-red">Dark & bright red grades</span>
+          <span class="tag tag-red">Moisture ≤10%</span>
+          <span class="tag tag-red">Tea & beverage grade</span>
+          <span class="tag tag-red">Phytosanitary certified</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="why-text">
+    <div class="section-tag">Why CedevGlobal</div>
+    <h2>Built on trust,<br><em>driven by quality</em></h2>
+    <p>We exist to make Nigerian agricultural exports reliable and accessible to global buyers. Every shipment reflects our commitment to the highest standards.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <h4>Strict quality & grading standards</h4>
+          <p>Every lot is inspected, cleaned, and graded before loading. We work with certified testing labs to meet your destination-market requirements.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <h4>Direct farmer & supplier network</h4>
+          <p>Years of relationships with trusted farmers and cooperatives across Nigeria give us consistent access to premium-quality produce at competitive prices.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <h4>Reliable delivery & documentation</h4>
+          <p>We handle all export documentation, phytosanitary certificates, and customs clearance — so goods arrive on time with zero compliance surprises.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <h4>Competitive, transparent pricing</h4>
+          <p>No hidden fees. We offer market-referenced pricing with clear breakdowns, so you can plan procurement with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="why-visual">
+    <div class="why-box">
+      <div class="why-box-icon">🌍</div>
+      <h5>Global buyers, Nigerian roots</h5>
+      <p>We serve importers, processors, and distributors across Europe, Asia, the Middle East, and beyond — all supplied from the heart of Nigeria's agricultural regions.</p>
+    </div>
+    <div class="why-box">
+      <div class="why-box-icon">📋</div>
+      <h5>Full compliance</h5>
+      <p>NAFDAC, SON, phytosanitary, and country-specific import documentation handled end-to-end.</p>
+    </div>
+    <div class="why-box">
+      <div class="why-box-icon">🤝</div>
+      <h5>Long-term partnerships</h5>
+      <p>We build lasting relationships, not one-off transactions. Repeat buyers get priority allocation and dedicated account support.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-header">
+    <div class="section-tag">How it works</div>
+    <h2>From enquiry to<br><em>delivery — simplified</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-circle"><span>1</span></div>
+      <h4>Send an enquiry</h4>
+      <p>Tell us the commodity, quantity, and destination. We respond within 24 hours with availability and pricing.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle"><span>2</span></div>
+      <h4>Receive a quote</h4>
+      <p>We provide a detailed offer including product specs, price, payment terms, and estimated shipping timeline.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle"><span>3</span></div>
+      <h4>Quality inspection</h4>
+      <p>Goods are sourced, cleaned, graded, and inspected. Third-party inspection available on request.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle"><span>4</span></div>
+      <h4>Shipment & delivery</h4>
+      <p>Full export documentation provided. Goods shipped by sea freight with tracking and timely arrival.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-tag">Get in touch</div>
+    <h2>Ready to source from<br><em>Nigeria?</em></h2>
+    <p>Whether you're an established importer or exploring Nigerian commodities for the first time, we're here to help. Reach out with your requirements and we'll respond promptly.</p>
+    <div class="contact-details">
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-info">
+          <label>Location</label>
+          <span>Abuja, Federal Capital Territory, Nigeria</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉️</div>
+        <div class="contact-detail-info">
+          <label>Email</label>
+          <span>info@cedevglobal.com</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div class="contact-detail-info">
+          <label>Phone / WhatsApp</label>
+          <span>+234 xxx xxx xxxx</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form-wrap">
+    <h3>Send us an enquiry</h3>
+
+    <!-- Success message (hidden until form submits) -->
+    <div id="form-success" style="display:none; background: rgba(45,106,69,0.08); border: 1px solid rgba(45,106,69,0.25); border-radius: 4px; padding: 20px 24px; margin-bottom: 24px;">
+      <p style="font-size:15px; color: var(--green-mid); font-weight:500; margin-bottom:4px;">✓ Enquiry sent successfully!</p>
+      <p style="font-size:13px; color: var(--text-muted); font-weight:300;">Thank you — we'll get back to you within 24 hours.</p>
+    </div>
+
+    <!-- Netlify form: name + data-netlify="true" enables Netlify Forms -->
+    <form
+      id="enquiry-form"
+      name="enquiry"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onsubmit="handleSubmit(event)"
+    >
+      <!-- Hidden fields required by Netlify -->
+      <input type="hidden" name="form-name" value="enquiry" />
+      <p style="display:none;"><input name="bot-field" /></p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First name</label>
+          <input id="first-name" type="text" name="first-name" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last name</label>
+          <input id="last-name" type="text" name="last-name" placeholder="Smith" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input id="email" type="email" name="email" placeholder="john@company.com" required />
+      </div>
+      <div class="form-group">
+        <label for="company">Company / Organisation</label>
+        <input id="company" type="text" name="company" placeholder="Your company name" />
+      </div>
+      <div class="form-group">
+        <label for="product">Product of interest</label>
+        <select id="product" name="product" required>
+          <option value="">Select a product…</option>
+          <option>Cashew Nuts (RCN)</option>
+          <option>Cashew Kernels (processed)</option>
+          <option>Sesame Seeds (natural)</option>
+          <option>Sesame Seeds (hulled)</option>
+          <option>Soybeans</option>
+          <option>Dried Hibiscus Flowers</option>
+          <option>Multiple products</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Your message</label>
+        <textarea id="message" name="message" placeholder="Please share your quantity requirements, destination country, and any other details…" required></textarea>
+      </div>
+      <button class="form-submit" type="submit" id="submit-btn">Submit enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<!-- Replace 234XXXXXXXXXX with your actual WhatsApp number (no + sign) -->
+<a
+  href="https://wa.me/234XXXXXXXXXX?text=Hello%20CedevGlobal%2C%20I%27m%20interested%20in%20your%20agricultural%20exports."
+  class="whatsapp-btn"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat with us on WhatsApp"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.979-1.418A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 0 1-4.073-1.117l-.29-.174-3.007.857.85-2.94-.19-.302A7.96 7.96 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.406-5.884c-.242-.121-1.43-.705-1.652-.786-.222-.08-.383-.12-.545.121-.16.242-.624.786-.765.947-.14.162-.282.182-.524.06-.242-.12-1.02-.376-1.944-1.199-.718-.64-1.203-1.431-1.344-1.673-.14-.242-.015-.373.106-.493.108-.109.242-.282.363-.424.12-.14.16-.242.242-.403.08-.162.04-.303-.02-.424-.06-.12-.545-1.313-.747-1.797-.196-.472-.396-.408-.545-.416l-.464-.008c-.161 0-.423.06-.645.303-.222.242-.847.828-.847 2.02 0 1.192.867 2.343.988 2.504.12.162 1.706 2.605 4.134 3.652.578.25 1.028.399 1.38.51.58.184 1.108.158 1.525.096.465-.069 1.43-.585 1.633-1.15.2-.564.2-1.048.14-1.15-.06-.1-.222-.161-.464-.282z"/>
+  </svg>
+  <span>Chat with us</span>
+</a>
+
+<footer>
+  <div class="footer-logo">Cedev<span>Global</span></div>
+  <div class="footer-links">
+    <a href="#products">Products</a>
+    <a href="#why">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 CedevGlobal. All rights reserved.</div>
+</footer>
+
+
+<style>
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 200;
+    display: flex; align-items: center; gap: 10px;
+    background: #25d366;
+    color: #fff;
+    padding: 12px 20px 12px 14px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 500;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 6px 28px rgba(37,211,102,0.45); }
+  .whatsapp-btn svg { flex-shrink: 0; }
+  .form-submit:disabled { opacity: 0.65; cursor: not-allowed; }
+</style>
+
+<script>
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('enquiry-form');
+    const btn  = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const data = new FormData(form);
+      const res  = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        throw new Error('failed');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit enquiry';
+      alert('Something went wrong. Please try again or email us at info@cedevglobal.com');
+    }
+  }
+</script>
+
+</body>
+</html>
